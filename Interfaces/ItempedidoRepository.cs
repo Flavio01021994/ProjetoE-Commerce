@@ -6,27 +6,19 @@ namespace ECommerceAPI.Interfaces
     {
         // R - Read (Leitura) 
         // Retorno
-        List<Produto> ListarTodos();
+        List<Itempedido> ListarTodos();
         //Recebe um identificador, e retorna o produto correspondente
-        Produto BuscarPorId(int id);
+        Itempedido BuscarPorId(int id);
 
         // C - Create (cadastro)
-        void Cadastrar(Produto produto);
+        void Cadastrar(Itempedido itempedido);
 
         // U - Update (Atualização)
         // Recebe um identificador para encontrar o Produto, e recebe o Produto Novo para subistituir o Antigo
-        void Atualizar(int id, Produto produto);
+        void Atualizar(int id, Itempedido itempedido);
 
         // D - Delete (Deleção)
         // Recebo o identificador de quem quero excluir
-        void Deletar(int id);   
-        }
+        void Deletar(int id);
+    }
 }
-
-
-
-
-
-
-
-

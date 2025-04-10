@@ -160,3 +160,5 @@ C:\Users\FIC\Desktop\FlavioProjetos\ECommerceAPI\ECommerceAPI\bin\Debug\net9.0\r
 C:\Users\FIC\Desktop\FlavioProjetos\ECommerceAPI\ECommerceAPI\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\FIC\Desktop\FlavioProjetos\ECommerceAPI\ECommerceAPI\obj\Debug\net9.0\ECommerceAPI.csproj.AssemblyReference.cache
 C:\Users\FIC\Desktop\FlavioProjetos\ECommerceAPI\ECommerceAPI\obj\Debug\net9.0\ECommerc.83EB260D.Up2Date
+C:\Users\FIC\Desktop\FlavioProjetos\ECommerceAPI\ECommerceAPI\obj\Debug\net9.0\ECommerceAPI.sourcelink.json
+C:\Users\FIC\Desktop\FlavioProjetos\ECommerceAPI\ECommerceAPI\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
