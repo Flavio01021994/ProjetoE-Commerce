@@ -2,20 +2,18 @@
 
 namespace ECommerceAPI.Interfaces
 {
-    public interface IProdutoRepository
+    public interface IItemPedidoRepository
     {
-        // R - Read (Leitura) 
-        // Retorno
         List<Itempedido> ListarTodos();
         //Recebe um identificador, e retorna o produto correspondente
         Itempedido BuscarPorId(int id);
 
         // C - Create (cadastro)
-        void Cadastrar(Itempedido itempedido);
+        void Cadastrar(Itempedido itemPedido);
 
         // U - Update (Atualização)
         // Recebe um identificador para encontrar o Produto, e recebe o Produto Novo para subistituir o Antigo
-        void Atualizar(int id, Itempedido itempedido);
+        void Atualizar(int id, Itempedido itemPedido);
 
         // D - Delete (Deleção)
         // Recebo o identificador de quem quero excluir
