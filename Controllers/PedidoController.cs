@@ -16,14 +16,14 @@ namespace ECommerceAPI.Controllers
        public PedidoController(EcommerceContext context)
         {
             _context = context;
-            _pedidoRepository = new IPedidoRepository(_context);
+            //_pedidoRepository = new PedidoRepository(_context);
         }
 
-        // GET
-        [HttpGet]
-        public IActionResult ListarProdutos()
-        {
-            return Ok(_pedidoRepository.ListarTodos());
-        }
+        //// GET
+        //[HttpGet]
+        //public IActionResult ListarProdutos()
+        //{
+        //    return Ok(_pedidoRepository.ListarTodos());
+        //}
     }
 }

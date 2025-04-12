@@ -10,20 +10,20 @@ namespace ECommerceAPI.Controllers
     public class ItemPedidoController : ControllerBase
     {
         private readonly EcommerceContext _context;
-        private ItemPedidoController _itemPedidoController;
+        private IItemPedidoRepository _itemPedidoRepository;
 
 
         public ItemPedidoController(EcommerceContext context)
         {
             _context = context;
-            _itemPedidoController = new ItemPedidoController(_context);
+            //_itemPedidoRepository = new ItemPedidoRe(_context);
         }
 
         // GET
-        [HttpGet]
-        public IActionResult ListarProdutos()
-        {
-            return Ok(ItemPedidoRepository.ListarTodos());
-        }
+        //[HttpGet]
+        //public IActionResult ListarProdutos()
+        //{
+        //    return Ok(_context.ListarTodos());
+        //}
     }
 }

@@ -1,5 +1,6 @@
 ﻿using ECommerceAPI.Context;
 using ECommerceAPI.Interfaces;
+using ECommerceAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +21,7 @@ namespace ECommerceAPI.Controllers
 
         // GET
         [HttpGet]
-        public IActionResult ListarProdutos()
+        public IActionResult ListarTodos()
         {
             return Ok(_clienteRepository.ListarTodos());
         }

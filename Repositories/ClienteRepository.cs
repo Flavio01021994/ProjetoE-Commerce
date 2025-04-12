@@ -32,7 +32,7 @@ namespace ECommerceAPI.Repositories
 
         public void Cadastrar(Cliente cliente)
         {
-            throw new NotImplementedException();
+            _context.Clientes.Add(cliente);
         }
 
         public void Deletar(int id)
@@ -42,7 +42,7 @@ namespace ECommerceAPI.Repositories
 
         public List<Cliente> ListarTodos()
         {
-            throw new NotImplementedException();
+            return _context.Clientes.ToList();
         }
 
         
