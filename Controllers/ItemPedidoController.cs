@@ -1,7 +1,10 @@
 ﻿using ECommerceAPI.Context;
 using ECommerceAPI.Interfaces;
+using ECommerceAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ECommerceAPI.Controllers
 {
@@ -9,21 +12,30 @@ namespace ECommerceAPI.Controllers
     [ApiController]
     public class ItemPedidoController : ControllerBase
     {
-        private readonly EcommerceContext _context;
+        
         private IItemPedidoRepository _itemPedidoRepository;
 
 
-        public ItemPedidoController(EcommerceContext context)
+        public ItemPedidoController(IItemPedidoRepository itemPedidoRepository)
         {
-            _context = context;
-            //_itemPedidoRepository = new ItemPedidoRe(_context);
+
+            _itemPedidoRepository = itemPedidoRepository;
         }
 
         // GET
-        //[HttpGet]
-        //public IActionResult ListarProdutos()
-        //{
-        //    return Ok(_context.ListarTodos());
-        //}
+        [HttpGet]
+        public IActionResult ListarProdutos()
+        {
+            return Ok(_itemPedidoRepository.ListarTodos());
+        }
+
+        [HttpPost]
+        public IActionResult CadastrarItemPedido(Itempedido item)
+        {
+            _itemPedidoRepository.Cadastrar(item);
+
+            return Created();
+        }
+
     }
 }

@@ -28,6 +28,7 @@ namespace ECommerceAPI.Repositories
         public void Cadastrar(Pagamento pagamento)
         {
             _context.Pagamentos.Add(pagamento);
+            _context.SaveChanges();
         }
 
         public void Deletar(int id)
