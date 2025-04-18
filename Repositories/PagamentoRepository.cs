@@ -1,7 +1,9 @@
-﻿using ECommerceAPI.Context;
+﻿using System.Reflection.Metadata;
+using ECommerceAPI.Context;
 using ECommerceAPI.Interfaces;
 using ECommerceAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace ECommerceAPI.Repositories
 {
@@ -17,7 +19,16 @@ namespace ECommerceAPI.Repositories
 
         public void Atualizar(int id, Pagamento pagamento)
         {
-            throw new NotImplementedException();
+            Pagamento pagamentoEncontrado = _context.Pagamentos.Find(id);
+
+            pagamentoEncontrado.IdPagamento = pagamento.IdPagamento;
+            pagamentoEncontrado.IdPedido = pagamento.IdPedido;
+            pagamentoEncontrado.FormaPagamento = pagamento.FormaPagamento;
+            pagamentoEncontrado.Status = pagamento.Status;
+            pagamentoEncontrado.Data = pagamento.Data;
+
+            _context.SaveChanges();
+
         }
 
         public Pagamento BuscarPorId(int id)
@@ -33,8 +44,18 @@ namespace ECommerceAPI.Repositories
 
         public void Deletar(int id)
         {
-            throw new NotImplementedException();
+            Pagamento pagamentoEncontrado = _context.Pagamentos.Find(id);
+
+            if (pagamentoEncontrado == null)
+            {
+                throw new Exception();
+            }
+
+            _context.Pagamentos.Remove(pagamentoEncontrado);
+
+            _context.SaveChanges();
         }
+        
 
         public List<Pagamento> ListarTodos()
         {

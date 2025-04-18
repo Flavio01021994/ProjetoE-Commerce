@@ -161,7 +161,6 @@ C:\Users\FIC\Desktop\FlavioProjetos\ECommerceAPI\ECommerceAPI\bin\Debug\net9.0\r
 C:\Users\FIC\Desktop\FlavioProjetos\ECommerceAPI\ECommerceAPI\obj\Debug\net9.0\ECommerceAPI.csproj.AssemblyReference.cache
 C:\Users\FIC\Desktop\FlavioProjetos\ECommerceAPI\ECommerceAPI\obj\Debug\net9.0\ECommerc.83EB260D.Up2Date
 C:\Users\FIC\Desktop\FlavioProjetos\ECommerceAPI\ECommerceAPI\obj\Debug\net9.0\ECommerceAPI.sourcelink.json
-C:\Users\FIC\Desktop\FlavioProjetos\ECommerceAPI\ECommerceAPI\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\FIC\Desktop\FlavioProjetos\ECommerceAPI\ECommerceAPI\bin\Debug\net9.0\Microsoft.OpenApi.dll
 C:\Users\FIC\Desktop\FlavioProjetos\ECommerceAPI\ECommerceAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\FIC\Desktop\FlavioProjetos\ECommerceAPI\ECommerceAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll

@@ -21,8 +21,8 @@ namespace ECommerceAPI.Controllers
         }
 
         // GET
-        [HttpGet]
-        public IActionResult ListarTodos(int id)
+        [HttpGet("{id}")]
+        public IActionResult ListarporID(int id)
         {
             Cliente cliente = _clienteRepository.BuscarPorId(id);
 
@@ -30,6 +30,7 @@ namespace ECommerceAPI.Controllers
             { 
                 return NotFound();
             }
+            return Ok(cliente);
         }
 
         [HttpPut("{id}")]

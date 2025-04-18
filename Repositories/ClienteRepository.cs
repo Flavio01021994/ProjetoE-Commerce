@@ -35,7 +35,7 @@ namespace ECommerceAPI.Repositories
 
         public Cliente BuscarPorId(int id)
         {
-            return _context.Clientes.FirstOrDefault(c=> p.IdCliente == id);
+            return _context.Clientes.FirstOrDefault(c=> c.IdCliente == id);
         }
 
         public void Cadastrar(Cliente cliente)

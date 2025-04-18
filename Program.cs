@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 //  AddTransiente - O C# cria uma instancia nova, toda vez que um metodo e chamado
 // AddScoped - O x# cria uma instancia nova, toda vez que cruar um controller
 // AddSingleton 
-builder.Services.AddScoped<EcommerceContext, EcommerceContext>();
+builder.Services.AddDbContext<EcommerceContext>();
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddTransient<IClienteRepository, ClienteRepository>();
 builder.Services.AddTransient<IPagamentoRepository, PagamentoRepository>();
