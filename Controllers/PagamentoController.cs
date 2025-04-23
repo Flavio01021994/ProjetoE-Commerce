@@ -1,5 +1,6 @@
 ﻿using ECommerceAPI.Context;
 using ECommerceAPI.Interfaces;
+using ECommerceAPI.Models;
 using ECommerceAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +15,7 @@ namespace ECommerceAPI.Controllers
         
         private IPagamentoRepository _pagamentoRepository;
 
-        public PagamentoController(PagamentoRepository pagamentoRepository)
+        public PagamentoController(IPagamentoRepository pagamentoRepository)
         {
             
             _pagamentoRepository = pagamentoRepository;
@@ -34,6 +35,13 @@ namespace ECommerceAPI.Controllers
             return Ok(pagamento);
 
         }
+        // GET
+        [HttpGet]
+        public IActionResult ListarPagamentos()
+        {
+            return Ok(_pagamentoRepository.ListarTodos());
+        }
+
 
         [HttpPut("{id}")]
         public IActionResult Editar(int id, Pagamento prod) 

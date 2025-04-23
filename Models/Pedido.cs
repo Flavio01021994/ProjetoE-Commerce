@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace ECommerceAPI.Models;
 
@@ -18,6 +19,8 @@ public partial class Pedido
     public virtual Cliente IdClienteNavigation { get; set; } = null!;
 
     public virtual ICollection<Itempedido> Itempedidos { get; set; } = new List<Itempedido>();
-
+    [JsonIgnore]
     public virtual ICollection<Pagamento> Pagamentos { get; set; } = new List<Pagamento>();
+
+
 }

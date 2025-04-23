@@ -1,6 +1,7 @@
 ﻿using ECommerceAPI.Context;
 using ECommerceAPI.Interfaces;
 using ECommerceAPI.Models;
+using Microsoft.AspNetCore.Http.Connections;
 
 namespace ECommerceAPI.Repositories
 {
@@ -10,32 +11,50 @@ namespace ECommerceAPI.Repositories
     public class ClienteRepository : IClienteRepository
     {
         private readonly EcommerceContext _context;
+        
 
         public ClienteRepository(EcommerceContext context)
         { 
             _context = context;
         }
-        public void Atualizar(int id, Cliente cliente)
+        public void Atualizar(int id, Cliente clienteNovo)
         {
-            Cliente cliente1 = _context.Clientes.Find(id);
+            // acho o cliente que desejo 
+            var clienteEncontrado = _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
 
-            cliente1.IdCliente = cliente1.IdCliente;
-            cliente1.NomeCompleto = cliente1.NomeCompleto;
-            cliente1.Email = cliente1.Email;
-            cliente1.Telefone = cliente1.Telefone;
-            cliente1.Endereco = cliente1.Endereco;
-            cliente1.DatadeCadastro = cliente1.DatadeCadastro;
+
+            if (clienteEncontrado == null) 
+            { 
+                throw new AbandonedMutexException("Cliente não encontrado.");
+            }
+
+            clienteEncontrado.NomeCompleto = clienteNovo.NomeCompleto;
+            clienteEncontrado.Email = clienteNovo.Email;
+            clienteEncontrado.Telefone = clienteNovo.Telefone;
+            clienteEncontrado.Endereco = clienteNovo.Endereco;
+            clienteEncontrado.Senha = clienteNovo.Senha;
+            clienteEncontrado.DatadeCadastro = clienteNovo.DatadeCadastro;
+
+            _context.SaveChanges();
 
         }
-
-        public Cliente BuscarPorEmailSenha(string email, string senha)
+        /// <summary>
+        /// Acessa o banco de dados e encontra o Cliente com email e senha fornecidos
+        /// </summary>
+        /// <returns>Um cliente ou nulo</returns>
+        public Cliente? BuscarPorEmailSenha(string email, string senha)
         {
-            throw new NotImplementedException();
+            // Encontrar o cliente que possui o email e senha fornecidos
+            var clienteEncontrado = _context.Clientes.FirstOrDefault(c => c.Email == email && c.Senha == senha);
+
+            return clienteEncontrado;
         }
 
         public Cliente BuscarPorId(int id)
         {
-            return _context.Clientes.FirstOrDefault(c=> c.IdCliente == id);
+            // qualquer metodo que vai me trazer apenas 1 cliente
+            // Usar First or Default
+            return _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
         }
 
         public void Cadastrar(Cliente cliente)
@@ -45,15 +64,21 @@ namespace ECommerceAPI.Repositories
         }
 
         public void Deletar(int id)
+            // find - pesquisa somente pela chave primaria (ID)
         {
-            Cliente cliente = _context.Clientes.Find(id);
-
-            if (cliente == null)
+            var clienteEncontrado = _context.Clientes.Find(id);
+            // caso eu nao encontre o cliente, lanço um erro 
+            if (clienteEncontrado != null) 
+            
             {
-                throw new Exception();
+                throw new ArgumentException("Cliente não encontrado");
             }
 
-            _context.Clientes.Remove(cliente);
+            // Removo o cliente
+            _context.Clientes.Remove(clienteEncontrado);
+
+            //Salvo a alteração
+            _context.SaveChanges();
         }
 
         public List<Cliente> ListarTodos()
