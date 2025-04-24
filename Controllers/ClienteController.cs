@@ -1,6 +1,8 @@
 ﻿using ECommerceAPI.Context;
+using ECommerceAPI.DTO;
 using ECommerceAPI.Interfaces;
 using ECommerceAPI.Models;
+using ECommerceAPI.NovaPasta1;
 using ECommerceAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +22,20 @@ namespace ECommerceAPI.Controllers
             _clienteRepository = clienteRepository;
         }
 
+        [HttpPost]
+        public IActionResult CadastrarProduto(CadastrarClienteDTO prod)
+        {
+            // 1 - Coloco o produto no Banco de Dados
+            _clienteRepository.Cadastrar(prod);
+
+
+
+            // 2 - Retorno o resultado
+            // 201 - Created
+            return Created();
+        }
+
+
         // GET
         [HttpGet("{id}")]
         public IActionResult ListarporID(int id)
@@ -33,6 +49,13 @@ namespace ECommerceAPI.Controllers
             return Ok(cliente);
         }
 
+        [HttpGet("/buscar/{nome}")]
+        public IActionResult BuscarPorNome(string nome)
+        {
+            return Ok(_clienteRepository.BuscarClientePorNome(nome));
+        }
+
+              
         // /api/cliente/vini@senai.com/senha
         [HttpGet("{email}/{senha}")]
         public IActionResult Login(string email, string senha)

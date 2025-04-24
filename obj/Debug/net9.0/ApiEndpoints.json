@@ -1,6 +1,43 @@
 [
   {
     "ContainingType": "ECommerceAPI.Controllers.ClienteController",
+    "Method": "CadastrarProduto",
+    "RelativePath": "api/Cliente",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "prod",
+        "Type": "ECommerceAPI.DTO.CadastrarClienteDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ECommerceAPI.Controllers.ClienteController",
+    "Method": "Login",
+    "RelativePath": "api/Cliente/{email}/{senha}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "senha",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ECommerceAPI.Controllers.ClienteController",
     "Method": "ListarporID",
     "RelativePath": "api/Cliente/{id}",
     "HttpMethod": "GET",
@@ -161,7 +198,7 @@
     "Parameters": [
       {
         "Name": "prod",
-        "Type": "ECommerceAPI.Models.Produto",
+        "Type": "ECommerceAPI.NovaPasta1.CadastrarProdutoDTO",
         "IsRequired": true
       }
     ],
@@ -215,6 +252,22 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ECommerceAPI.Controllers.ClienteController",
+    "Method": "BuscarPorNome",
+    "RelativePath": "buscar/{nome}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nome",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

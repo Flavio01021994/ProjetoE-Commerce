@@ -1,4 +1,5 @@
 ﻿using ECommerceAPI.Models;
+using ECommerceAPI.NovaPasta1;
 
 namespace ECommerceAPI.Interfaces
 {
@@ -11,7 +12,7 @@ namespace ECommerceAPI.Interfaces
         Produto BuscarPorId(int id);
 
         // C - Create (cadastro)
-        void Cadastrar(Produto produto);
+        void Cadastrar(CadastrarProdutoDTO produto);
 
         // U - Update (Atualização)
         // Recebe um identificador para encontrar o Produto, e recebe o Produto Novo para subistituir o Antigo

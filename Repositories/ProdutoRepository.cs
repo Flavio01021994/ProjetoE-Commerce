@@ -1,6 +1,7 @@
 ﻿using ECommerceAPI.Context;
 using ECommerceAPI.Interfaces;
 using ECommerceAPI.Models;
+using ECommerceAPI.NovaPasta1;
 
 namespace ECommerceAPI.Repositories
 {
@@ -46,9 +47,20 @@ namespace ECommerceAPI.Repositories
             return _context.Produtos.FirstOrDefault(p=> p.IdProduto == id);
         }
 
-        public void Cadastrar(Produto produto)
+        public void Cadastrar(CadastrarProdutoDTO produto)
         {
-            _context.Produtos.Add(produto);
+            Produto produtoCadastro = new Produto
+
+            {
+                Nome = produto.Nome,
+                Descricao = produto.Descricao,
+                Preco = produto.Preco,
+                EstoqueDisponivel = produto.EstoqueDisponivel,
+                Categoria = produto.Categoria,
+                Imagem = produto.Imagem,
+            };
+
+            _context.Produtos.Add(produtoCadastro);
 
             _context.SaveChanges();
         }
