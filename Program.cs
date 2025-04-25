@@ -16,8 +16,8 @@ builder.Services.AddDbContext<EcommerceContext>();
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddTransient<IClienteRepository, ClienteRepository>();
 builder.Services.AddTransient<IPagamentoRepository, PagamentoRepository>();
-//builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
-//builder.Services.AddTransient<IItemPedidoRepository, IItemPedidoRepository>();
+builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
+builder.Services.AddTransient<IItemPedidoRepository, IItemPedidoRepository>();
 
 var app = builder.Build();
 app.UseSwagger();

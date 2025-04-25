@@ -1,11 +1,13 @@
 ﻿using System.Reflection.Metadata;
 using ECommerceAPI.Context;
+using ECommerceAPI.DTO;
 using ECommerceAPI.Interfaces;
 using ECommerceAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.EntityFrameworkCore.Query;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ECommerceAPI.Repositories
 {
@@ -38,9 +40,19 @@ namespace ECommerceAPI.Repositories
             throw new NotImplementedException();
         }
 
-        public void Cadastrar(Pagamento pagamento)
+        public void Cadastrar(CadastrarPagamentoDTO pagamento)
         {
-            _context.Pagamentos.Add(pagamento);
+            Pagamento pagamentoCadastro = new Pagamento
+            {
+
+
+                IdPedido = pagamento.IdPedido,
+                FormaPagamento = pagamento.FormaPagamento,
+                Status = pagamento.Status,
+                Data = pagamento.Data
+            };
+
+            _context.Pagamentos.Add(pagamentoCadastro);
             _context.SaveChanges();
         }
 

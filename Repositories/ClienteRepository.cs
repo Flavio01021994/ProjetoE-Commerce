@@ -2,6 +2,7 @@
 using ECommerceAPI.DTO;
 using ECommerceAPI.Interfaces;
 using ECommerceAPI.Models;
+using ECommerceAPI.ViewModels;
 using Microsoft.AspNetCore.Http.Connections;
 
 namespace ECommerceAPI.Repositories
@@ -99,11 +100,22 @@ namespace ECommerceAPI.Repositories
             _context.SaveChanges();
         }
 
-        public List<Cliente> ListarTodos()
+        public List<ListarClienteViewModel> ListarTodos()
         {
-            return _context.Clientes.OrderBy(c => c.NomeCompleto).ToList();
+            return _context.Clientes
+                // Permite que eu selecione quais tempos eu quero pegar
+                .Select(
+                    c => new ListarClienteViewModel
+                    {
+                        IdCliente = c.IdCliente,
+                        NomeCompleto = c.NomeCompleto,
+                        Email = c.Email,
+                        Telefone = c.Telefone,
+                        Endereco = c.Endereco,
+                    })
+                .ToList();
         }
 
-        
+
     }
 }

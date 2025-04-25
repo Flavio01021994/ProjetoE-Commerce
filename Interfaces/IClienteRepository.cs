@@ -1,5 +1,6 @@
 ﻿using ECommerceAPI.DTO;
 using ECommerceAPI.Models;
+using ECommerceAPI.ViewModels;
 
 namespace ECommerceAPI.Interfaces
 {
@@ -7,7 +8,7 @@ namespace ECommerceAPI.Interfaces
     {
         // R - Read (Leitura) 
         // Retorno
-        List<Cliente> ListarTodos();
+        List<ListarClienteViewModel> ListarTodos();
         //Recebe um identificador, e retorna o produto correspondente
         Cliente BuscarPorId(int id);
         Cliente BuscarPorEmailSenha(string email, string senha);
@@ -24,5 +25,8 @@ namespace ECommerceAPI.Interfaces
         void Deletar(int id);
 
         List<Cliente> BuscarClientePorNome(string nome);
+
+        
+       
     }
 }
