@@ -309,6 +309,18 @@
         }
       }
     },
+    "/api/Pedido": {
+      "get": {
+        "tags": [
+          "Pedido"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Produto": {
       "get": {
         "tags": [
@@ -559,10 +571,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "idPedidoNavigation": {
-            "$ref": "#/components/schemas/Pedido"
-          },
-          "idProdutoNavigation": {
+          "produto": {
             "$ref": "#/components/schemas/Produto"
           }
         },
@@ -663,13 +672,6 @@
           },
           "imagem": {
             "type": "string",
-            "nullable": true
-          },
-          "itempedidos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Itempedido"
-            },
             "nullable": true
           }
         },

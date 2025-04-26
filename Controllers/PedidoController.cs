@@ -9,21 +9,21 @@ namespace ECommerceAPI.Controllers
     [ApiController]
     public class PedidoController : ControllerBase
     {
-        
+
         private IPedidoRepository _pedidoRepository;
-        
 
-       //public PedidoController(PedidoRepository pedidoRepository)
-       // {
-            
-         //   _pedidoRepository = pedidoRepository;
-       // }
 
-        //// GET
-        //[HttpGet]
-        //public IActionResult ListarProdutos()
-        //{
-        //    return Ok(_pedidoRepository.ListarTodos());
-        //}
+        public PedidoController(IPedidoRepository pedidoRepository)
+         {
+
+           _pedidoRepository = pedidoRepository;
+         }
+
+        // GET
+        [HttpGet]
+        public IActionResult ListarProdutos()
+        {
+            return Ok(_pedidoRepository.ListarTodos());
+        }
     }
 }

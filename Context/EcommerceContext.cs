@@ -63,12 +63,12 @@ public partial class EcommerceContext : DbContext
 
             entity.ToTable("Itempedido");
 
-            entity.HasOne(d => d.IdPedidoNavigation).WithMany(p => p.Itempedidos)
+            entity.HasOne(d => d.Pedido).WithMany(p => p.Itempedidos)
                 .HasForeignKey(d => d.IdPedido)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Itempedid__IdPed__0D7A0286");
 
-            entity.HasOne(d => d.IdProdutoNavigation).WithMany(p => p.Itempedidos)
+            entity.HasOne(d => d.Produto).WithMany(p => p.Itempedidos)
                 .HasForeignKey(d => d.IdProduto)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Itempedid__IdPro__0E6E26BF");

@@ -3,6 +3,7 @@ using ECommerceAPI.DTO;
 using ECommerceAPI.Interfaces;
 using ECommerceAPI.Models;
 using Microsoft.AspNetCore.Http.Connections;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ECommerceAPI.Repositories
@@ -75,7 +76,11 @@ namespace ECommerceAPI.Repositories
 
         public List<Pedido> ListarTodos()
         {
-            throw new NotImplementedException();
+            return _context.Pedidos
+                .Include(p => p.Itempedidos)
+                .ThenInclude(p => p.Produto)
+                .ToList();
+                
         }
     }
 }
