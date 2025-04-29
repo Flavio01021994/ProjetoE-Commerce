@@ -2,6 +2,7 @@
 using ECommerceAPI.DTO;
 using ECommerceAPI.Interfaces;
 using ECommerceAPI.Models;
+using ECommerceAPI.Services;
 using ECommerceAPI.ViewModels;
 using Microsoft.AspNetCore.Http.Connections;
 
@@ -70,6 +71,8 @@ namespace ECommerceAPI.Repositories
 
         public void Cadastrar(CadastrarClienteDTO cliente)
         {
+            var passwordService = new PasswordService();
+
             Cliente cadastrarCliente = new Cliente
             {
                 NomeCompleto = cliente.NomeCompleto,
@@ -78,6 +81,9 @@ namespace ECommerceAPI.Repositories
                 Endereco = cliente.Endereco,
                 Senha = cliente.Senha
             };
+
+            cliente.Senha = passwordService.HashPassword(cadastrarCliente);
+
             _context.Clientes.Add(cadastrarCliente);
             _context.SaveChanges();
         }

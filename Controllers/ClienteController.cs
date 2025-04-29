@@ -4,6 +4,7 @@ using ECommerceAPI.Interfaces;
 using ECommerceAPI.Models;
 using ECommerceAPI.NovaPasta1;
 using ECommerceAPI.Repositories;
+using ECommerceAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +17,9 @@ namespace ECommerceAPI.Controllers
         
         private IClienteRepository _clienteRepository;
 
+        // Instanciar o PasswordService
+
+        
         public ClienteController(ClienteRepository clienteRepository)
         {
 
@@ -23,7 +27,7 @@ namespace ECommerceAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CadastrarProduto(CadastrarClienteDTO prod)
+        public IActionResult CadastrarCliente(CadastrarClienteDTO prod)
         {
             // 1 - Coloco o produto no Banco de Dados
             _clienteRepository.Cadastrar(prod);
