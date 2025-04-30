@@ -61,17 +61,20 @@ namespace ECommerceAPI.Controllers
 
               
         // /api/cliente/vini@senai.com/senha
-        [HttpGet("{email}/{senha}")]
-        public IActionResult Login(string email, string senha)
+        [HttpPost("login")]
+        public IActionResult Login(LoginDto login)
         { 
-            var cliente = _clienteRepository.BuscarPorEmailSenha(email,senha);
+            var cliente = _clienteRepository.BuscarPorEmailSenha(login.Email,login.Senha);
 
             if (cliente == null)
             {
-                return NotFound();
+                return Unauthorized("Email ou Senha invalidos!");
             }
+            var tokenService = new TokenService();
 
-            return Ok(cliente);
+            var token = tokenService.GenerateToken(cliente.Email);
+
+            return Ok(token);
         }
 
         [HttpPut("{id}")]
