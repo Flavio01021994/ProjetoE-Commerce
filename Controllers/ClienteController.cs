@@ -20,7 +20,7 @@ namespace ECommerceAPI.Controllers
         // Instanciar o PasswordService
 
         
-        public ClienteController(ClienteRepository clienteRepository)
+        public ClienteController(IClienteRepository clienteRepository)
         {
 
             _clienteRepository = clienteRepository;

@@ -95,7 +95,7 @@ namespace ECommerceAPI.Repositories
                 Senha = cliente.Senha
             };
 
-            cliente.Senha = passwordService.HashPassword(cadastrarCliente);
+            clientecadastro.Senha = passwordService.HashPassword(cadastrarCliente);
 
             _context.Clientes.Add(cadastrarCliente);
             _context.SaveChanges();
@@ -106,11 +106,14 @@ namespace ECommerceAPI.Repositories
         {
             var clienteEncontrado = _context.Clientes.Find(id);
             // caso eu nao encontre o cliente, lanço um erro 
-            if (clienteEncontrado != null) 
-            
+            if (clienteEncontrado != null)
+
             {
                 throw new ArgumentException("Cliente não encontrado");
             }
+
+
+
 
             // Removo o cliente
             _context.Clientes.Remove(clienteEncontrado);
